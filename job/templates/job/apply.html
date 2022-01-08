@@ -1,0 +1,65 @@
+{% extends "job/layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="apply row">
+
+        <div class="col-12 col-md-8 main-col">
+            <h2>Job description</h2>
+
+            {% if message %}
+            <div class="alert alert-primary">{{ message }}</div>
+            {% endif %}
+
+            <div class="job-container">
+                <div class="job-title">
+                    {{ job.title }}
+                </div>
+
+                <div class="company">
+                    <div class="job-company">
+                        <span>Company:</span> {{ job.company }}
+                    </div>
+                    <div class="job-city">
+                        <span>City:</span> {{ job.city }}
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="job-date">
+                        <span>Posted on :</span> {{ job.timestamp }}
+                    </div>
+                    <div class="job-category">
+                        <span>Category:</span> {{ job.category }}
+                    </div>
+                    <div class="job-salary">
+                        <span>Salary: </span>{{ job.salary }} &euro;
+                    </div>
+                </div>
+                <div class="job-content">
+                    {{ job.description }}
+                </div>
+            </div>
+
+            <h2>Apply for this Job </h2>
+            <p>Write a short description about yourself with your contact information and upload your CV in pdf format.</p>
+            <form class="apply-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary" type="submit">Apply</button>
+            </form>
+        </div>
+
+        <div class="currency col-6 col-md-4 s-col">
+            <h4>See the Salary of this job as current USD</h4>
+            <form id="currency-form">
+                <input id="currency" placeholder="{{ job.salary }} &euro;">
+                <input type="submit" value="Convert">
+            </form>
+            <div id="result">
+            </div>
+        </div>
+    </div>
+
+</div>
+    {% endblock %}

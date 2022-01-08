@@ -1,0 +1,14 @@
+{% extends "job/layout.html" %}
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="my-title">Post New Job</h2>
+        <form class="post-job create-form" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn btn-primary" type="submit" />
+        </form>
+    </div>
+
+    {% endblock %}

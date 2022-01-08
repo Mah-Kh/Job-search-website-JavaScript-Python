@@ -1,0 +1,94 @@
+{% extends "job/layout.html" %}
+
+{% block body %}
+
+<div class="container">
+
+    {% if employer %}
+    <div class="as-employer row">
+        <div id="all-jobs" class="col-12 col-md-8 main-col">
+            <h2>Your recieved applications</h2>
+            {% for application in applications %}
+            <div class="job-container">
+                <div class="job-title">
+                    Job Title: {{ application.job_title }}
+                </div>
+                <div class="job-date">
+                    <span>Posted on :</span> {{ application.timestamp }}
+                </div>
+                <div class="job-content">
+                    <span>short description about applicant:</span> {{ application.description }}
+                </div>
+                <div class="job-employee">
+                    <span>Applied by:</span> {{ application.employee |title }}
+                </div>
+                <div class="job-cv">
+                    <span>Applicant uploaded CV:</span> <a href="/media/{{ application.document }}">open the file</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-6 col-md-4 s-col">
+            <h4>Your posted jobs</h4>
+            {% for job in jobs %}
+            <div class="job-container">
+                <div class="job-title">
+                    {{ job.title }}
+                </div>
+                <div class="job-date">
+                    <span>Posted on :</span> {{ job.timestamp }}
+                </div>
+                <div class="job-category">
+                    <span>Category:</span> {{ job.category }}
+                </div>
+                <a class="" href="/job/{{ job.id }}">See Job details</a>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if employee %}
+    <div class="as-employee row">
+        <div id="all-jobs" class="col-12 col-md-8 main-col">
+            <h2>Your Applied Jobs</h2>
+            {% for apply in applies %}
+            <div class="job-container">
+                <div class="job-title">
+                    {{ apply.job_title }}
+                </div>
+                <div class="job-date">
+                    <span>Posted on :</span> {{ apply.timestamp }}
+                </div>
+                <a class="" href="/job/{{ apply.job_id }}">See Job details</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="all-jobs" class="col-6 col-md-4 s-col">
+        <h4>Recent Posted Jobs</h4>
+        {% for job in  recents%}
+        <div class="job-container">
+            <div class="job-title">
+                {{ job.title }}
+            </div>
+            <div class="job-date">
+                Posted on : {{ job.timestamp }}
+            </div>
+            <a class="" href="/job/{{ job.id }}">See Job details</a>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+        {% endif %}
+
+    </div>
+
+
+    {% endblock %}
+
