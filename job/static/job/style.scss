@@ -1,0 +1,222 @@
+﻿
+$dark-blue: #242441;
+$white: #fff;
+$orange: #de7824;
+$light-gray: #4346710d;
+$main-padding: 35px 0;
+$box-padding: 35px;
+
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin background-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 680px;
+    background-position: center;
+}
+
+%flexcenter {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+%main-margin {
+    margin: 100px auto;
+
+    @media (max-width: 650px) {
+        margin: 50px auto;
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-top {
+    height: 380px;
+    background: $dark-blue;
+    background-image: linear-gradient(141deg, $dark-blue, #474a77);
+    padding: 50px;
+    h1 {
+        color: #fff;
+    }
+}
+.navbar a {
+    color: #fff !important;
+}
+
+@media (min-width: 1000px) {
+    main {
+        min-height: 80vh;
+        height: auto;
+    }
+}
+
+#alljobs-container,
+.apply, .job-page {
+    margin: 100px auto;
+}
+h1, h2 {
+    line-height: 5.2rem;
+    text-align: center;
+
+    @media (max-width: 650px) {
+        line-height: 3rem;
+    }
+}
+
+nav {
+    background-color: rgb(36 36 65 / 0.3);
+    background-image: linear-gradient(141deg, $dark-blue, #474a77);
+}
+
+footer {
+    background-color: $dark-blue;
+    padding: $main-padding;
+    color: #fff;
+    padding: 30px;
+}
+.select {
+    @extend %flexcenter;
+    color: #fff;
+
+    > div {
+        margin: 15px;
+
+        label {
+            margin-right: 6px;
+            font-size: 1.2rem;
+        }
+    }
+}
+.job-container {
+    @extend %flexcenter;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+
+    > div {
+        margin: 8px 0;
+        width: 100%;
+        span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+    }
+
+    .company, .category {
+        width: 50%;
+        > div {
+            margin: 10px 0;
+        }
+        @media (max-width: 767px){
+            width: 100%;
+        }
+    }
+
+    .job-title {
+        color: $orange;
+        font-size: 1.3rem;
+        font-weight: 600;
+        border-bottom: 1px dotted #ddd;
+    }
+}
+.apply-btn {
+    background: $orange;
+    color: $white;
+    margin: 10px 0;
+}
+.close-job {
+    text-align: right;
+}
+.as-employer, .as-employee {
+    @extend %flexcenter;
+    align-items: self-start;
+
+    > div.main-col {
+        padding: 20px;
+        margin: 30px 0;
+
+        h2 {
+            text-align: left;
+        }
+    }
+
+    div.s-col {
+        padding: 20px;
+        margin: 30px 0;
+        background: $light-gray;
+
+        &.col-6 {
+            margin-top: 60px;
+
+            @media (max-width: 767px) {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.post-job {
+    border: 1px solid #ddd;
+    padding: 30px;
+
+    input, select, textarea {
+        display: block;
+        min-width: 50%;
+        width: auto;
+
+        @media (max-width: 767px) {
+            min-width: 100%;
+        }
+    }
+
+    .btn-primary {
+        margin: 30px 0;
+        width: auto;
+    }
+}
+.post-job label {
+    margin: .7rem 0 !important;
+}
+
+.apply-form {
+    textarea {
+        width: 100%;
+    }
+}
+.currency {
+    padding: 20px;
+    background: #4346710d;
+
+    &.col-6 {
+        @media (max-width: 767px) {
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    form {
+        margin-top: 15px;
+    }
+}
+.my-title {
+    margin-top: 50px;
+}
+
+#result {
+    margin-top: 30px;
+}
+
+
