@@ -1,0 +1,55 @@
+{% extends "job/layout.html" %}
+
+{% block body %}
+
+<div class="container job-page">
+    <div class="job-container">
+        {% if message %}
+        <div class="alert alert-primary">{{ message }}</div>
+        {% endif %}
+
+        <div class="job-title">
+            {{ job.title }}
+        </div>
+
+        <div class="company">
+            <div class="job-company">
+                <span>Company:</span> {{ job.company }}
+            </div>
+            <div class="job-city">
+                <span>City:</span> {{ job.city }}
+            </div>
+        </div>
+        <div class="category">
+            <div class="job-date">
+                <span>Posted on :</span> {{ job.timestamp }}
+            </div>
+            <div class="job-category">
+                <span>Category:</span> {{ job.category }}
+            </div>
+            <div class="job-salary">
+                <span>Salary: </span>{{ job.salary }} &euro;
+            </div>
+        </div>
+
+        <div class="job-content">
+            {{ job.description }}
+        </div>
+
+        <div class="apply">
+            <a class="apply-btn checked btn btnsecondary /active" href="/apply/{{ job.id }}">Apply</a>
+        </div>
+
+        {% if employer %}
+        <div class="close-job">
+            <form action="" method="post" class="field">
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" name="expired" value="Close Job" />
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+    {% endblock %}

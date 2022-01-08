@@ -1,0 +1,29 @@
+{% extends "job/layout.html" %}
+
+{% block body %}
+<div class="header-top">
+    <h1>Find Your Job</h1>
+    <div class="select">
+        <div class="select-category">
+            <form class="select-category" method="post">
+                {% csrf_token %}
+                {{ categoryform }}
+            </form>
+        </div>
+        <div class="select-city">
+            <form class="select-city" method="post">
+                {% csrf_token %}
+                {{ cityform }}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="alljobs-container" class="container">
+
+</div>
+
+{% endblock %}
